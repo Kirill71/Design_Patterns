@@ -58,11 +58,6 @@ class Composite: public Component
 	std::vector<Component*> nodes;
 public:
 	explicit Composite(const char* _name) : Component(_name), nodes(){}
-	/*~Composite()
-	{
-		for(auto node: nodes)
-			delete node;
-	}*/
 	void operation() const override
 	{
 		std::cout << name() << std::endl;
@@ -98,7 +93,6 @@ int main()
 	root->add(*leaf2);
 	root->operation();
 	system("pause");
-
 	return 0;
 	
 }
