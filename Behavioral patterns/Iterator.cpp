@@ -3,8 +3,6 @@
 #include<memory>
 #include<string>
 
-
-
 template< typename Type>
 using collection = std::vector<Type>;
 
