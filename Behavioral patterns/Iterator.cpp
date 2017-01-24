@@ -112,7 +112,9 @@ int main()
 	auto iter = a->createIterator();
 	for (auto e = iter->first(); !iter->isDone(); e = iter->next())
 		std::cout << *e << std::endl;
-	
+
+
+
 	system("Pause");
 	return 0;
 }
