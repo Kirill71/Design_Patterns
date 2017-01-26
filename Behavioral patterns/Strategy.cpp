@@ -1,4 +1,5 @@
 #include<iostream>
+#include<memory>
 
 class Strategy
 {
@@ -37,7 +38,7 @@ class Context
 {
 	Strategy* strategy;
 public:
-	Context(const Strategy& strtgy) : strategy{&const_cast<Strategy&>(strtgy)} {}
+	 explicit Context(const Strategy& strtgy) : strategy{&const_cast<Strategy&>(strtgy)} {}
 
 	void setStrategy(const Strategy& strtgy)
 	{
@@ -49,19 +50,17 @@ public:
 		strategy->algorithmInterface();
 	}
 };
+
 int main()
 {
-	ConcreteStrategyA strategyA;
-	ConcreteStrategyB strategyB;
-	ConcreteStrategyC strategyC;
-	Context context(strategyA);
-	context.contextInterface();
+	auto  context = std::make_shared<Context>(ConcreteStrategyA());
+	context->contextInterface();
 
-	context.setStrategy(strategyB);
-	context.contextInterface();
+	context->setStrategy(ConcreteStrategyB());
+	context->contextInterface();
 
-	context.setStrategy(strategyC);
-	context.contextInterface();
+	context->setStrategy(ConcreteStrategyC());
+	context->contextInterface();
 
 	system("pause");
 	return 0;
