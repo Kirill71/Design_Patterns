@@ -6,8 +6,9 @@ class Memento
 {
 	std::string state_;
 public:
-	Memento(){}
-	explicit Memento(const std::string& stt): state_(stt){}
+	Memento() {}
+
+	explicit Memento(const std::string& stt): state_(stt) {}
 
 	const std::string&  state() const { return state_; }
 };
@@ -16,7 +17,7 @@ class Originator
 {
 	std::string state_;
 public:
-	Originator():state_(){}
+	Originator():state_() {}
 	const std::string&  state() const { return state_; }
 	
 	std::string&  state() { return state_;}
