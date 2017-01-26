@@ -29,7 +29,7 @@ class ConcreteClass : public AbstractClass
 
 int main()
 {
-	std::shared_ptr<AbstractClass> instance =  std::make_shared<ConcreteClass>();
+	std::shared_ptr<AbstractClass> instance = std::make_shared<ConcreteClass>();
 	instance->templateMethod();
 
 	system("pause");
