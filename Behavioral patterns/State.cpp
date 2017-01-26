@@ -1,5 +1,5 @@
-#include<memory>
 #include<iostream>
+
 class Context;
 
 class State
@@ -25,7 +25,7 @@ public:
 class ConcreteStateA : public State
 {	
 public:
-	ConcreteStateA(){}
+	ConcreteStateA() {}
 	void handle(Context& context) const override;
 };
 
