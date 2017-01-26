@@ -4,15 +4,14 @@
 
 class Context
 {
-friend class TerminalExpression;
-friend class NonterminalExpression;
+	friend class TerminalExpression;
+	friend class NonterminalExpression;
 private:
 	std::string source;
 	char vocabulary;
-	
 	int position;
 public:
-	Context(const std::string& src,char voc) : source(src),
+	Context(const std::string& src, char voc) : source(src),
 		vocabulary(voc),
 		result(),
 		position()
@@ -38,7 +37,6 @@ public:
 
 class NonterminalExpression: public AbstractExpression
 {
-	
 public:
 	void interpret(Context& context) override
 	{
@@ -56,7 +54,7 @@ public:
 
 int main()
 {
-	Context context("aaa",'ab');
+	Context context("aaa",'a');
 	NonterminalExpression expression;
 	expression.interpret(context);
 
