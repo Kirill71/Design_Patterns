@@ -10,7 +10,7 @@ public:
 class ConcreteStrategyA : public Strategy
 {	
 public:
-	void algorithmInterface() const
+	void algorithmInterface() const override
 	{
 		std::cout << "Concrete Strategy A" << std::endl;
 	}
@@ -19,7 +19,7 @@ public:
 class ConcreteStrategyB : public Strategy
 {
 public:
-	void algorithmInterface() const
+	void algorithmInterface() const override
 	{
 		std::cout << "Concrete Strategy B" << std::endl;
 	}
@@ -28,7 +28,7 @@ public:
 class ConcreteStrategyC : public Strategy
 {
 public:
-	void algorithmInterface() const
+	void algorithmInterface() const override
 	{
 		std::cout << "Concrete Strategy C" << std::endl;
 	}
