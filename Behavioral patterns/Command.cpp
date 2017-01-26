@@ -15,17 +15,15 @@ class Command
 protected:
 	Receiver* reciever;
 public:
-	explicit Command(const Receiver& rhs): reciever(&const_cast<Receiver&>(rhs)){}
+	explicit Command(const Receiver& rhs): reciever(&const_cast<Receiver&>(rhs)) {}
 
 	virtual void execute() const = 0;
 };
 
-
 class ConcreteCommand : public Command
 {
 public:
-	explicit ConcreteCommand(const Receiver& rhs): Command(rhs)
-	{}
+	explicit ConcreteCommand(const Receiver& rhs): Command(rhs) {}
 
 	void execute() const  override
 	{
@@ -52,9 +50,8 @@ public:
 
 int main()
 {
-	Receiver reciever;
 	Invoker invoker;
-	std::shared_ptr<Command> command = std::make_shared<ConcreteCommand>(reciever);
+	std::shared_ptr<Command> command = std::make_shared<ConcreteCommand>(Receiver());
 	invoker.store_command(*command);
 	invoker.execute_command();
 
