@@ -1,6 +1,7 @@
 #include<string>
 #include<memory>
 #include<iostream>
+
 class Colleague;
 class Colleague1;
 class Colleague2;
@@ -8,20 +9,15 @@ class Colleague2;
 class Mediator
 {
 public:
-	virtual void send(const std::string& msg, const Colleague& colleague) = 0;
+	virtual void send(const std::string& msg, const Colleague& colleague) const = 0;
 };
 
 class Colleague
 {
 protected:
-	std::unique_ptr<Mediator> mediator;
+	Mediator* mediator;
 public:
 	explicit Colleague(const Mediator& mediator_) :mediator{ &const_cast<Mediator&>(mediator_) } {}
-
-	void notify(const std::string message) const
-	{
-		std::cout << message << std::endl;
-	}
 };
 
 class ConcreteColleague1 : public Colleague
@@ -29,9 +25,14 @@ class ConcreteColleague1 : public Colleague
 public:
 	explicit ConcreteColleague1(const Mediator& mediator_) : Colleague(mediator_) {}
 
-	void send(const std::string& message)
+	void send(const std::string& message) const
 	{
 		mediator->send(message, *this);
+	}
+
+	void notify(const std::string message) const
+	{
+		std::cout << "Concrete Colleague 1 "  << message << std::endl;
 	}
 };
 
@@ -40,12 +41,16 @@ class ConcreteColleague2 : public Colleague
 public:
 	explicit ConcreteColleague2(const Mediator& mediator_) : Colleague(mediator_) {}
 
-	void send(const std::string& message)
+	void send(const std::string& message) const
 	{
 		mediator->send(message, *this);
 	}
-};
 
+	void notify(const std::string message) const
+	{
+		std::cout << "Concrete Colleague 2 "<< message << std::endl;
+	}
+};
 
 class ConcreteMediator : public Mediator
 {
@@ -63,15 +68,14 @@ public:
 		colleague2 = &const_cast<ConcreteColleague2&>(c);
 	}
 
-	void send(const std::string& msg, const Colleague& colleague) 
+	void send(const std::string& msg, const Colleague& colleague) const
 	{
 		if (colleague1 == &colleague)
 			colleague2->notify(msg);
-		else 
+		else
 			colleague1->notify(msg);
 	}
 };
-
 
 int main()
 {
