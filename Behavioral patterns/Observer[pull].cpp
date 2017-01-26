@@ -1,7 +1,7 @@
 #include<list>
-#include<memory>
 #include<string>
 #include<iostream>
+
 class Observer
 {
 public:
@@ -47,7 +47,6 @@ public:
 		observerState = subject_->state();
 		std::cout << " observer was update with state - " << observerState<<std::endl;
 	}
-
 };
 
 int main()
@@ -56,10 +55,9 @@ int main()
 	ConcreteObserver observer(subject);
 	subject.attach(observer);
 	subject.attach(observer);
-	subject.state() = "Some State ... ";
+	subject.state() = "Some State ...";
 	subject.notify();
 
 	system("pause");
 	return 0;
 }
-
