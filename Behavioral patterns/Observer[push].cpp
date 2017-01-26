@@ -1,7 +1,7 @@
 #include<list>
-#include<memory>
 #include<string>
 #include<iostream>
+
 class Observer
 {
 public:
@@ -56,7 +56,7 @@ int main()
 	ConcreteObserver observer(subject);
 	subject.attach(observer);
 	subject.attach(observer);
-	subject.state() = "Some State 1... ";
+	subject.state() = "Some State...";
 	subject.notify();
 
 	system("pause");
