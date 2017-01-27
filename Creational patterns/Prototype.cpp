@@ -16,7 +16,7 @@ class ConcretePrototype1 : public Prototype
 	int value1;
 public:
 	int get()const { return value1;}
-	explicit ConcretePrototype1(int i):value1(i) {}
+	 ConcretePrototype1(int i):value1(i) {}
 	ConcretePrototype1(const ConcretePrototype1& rhs):Prototype(rhs),value1(rhs.value1) {}
 
 	std::shared_ptr<Prototype> clone() const override
