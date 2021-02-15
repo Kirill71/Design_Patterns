@@ -1,4 +1,4 @@
-#include<list>
+#include<vector>
 #include<string>
 #include<iostream>
 
@@ -10,7 +10,7 @@ public:
 
 class Subject
 {
-	std::list< Observer*> observers;
+	std::vector<Observer*> observers;
 public:
 	void attach(const Observer& observer)
 	{
