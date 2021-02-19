@@ -35,15 +35,16 @@ public:
 	ConcreteStateB() {}
 	void handle(Context& context) const  override
 	{
-		context.state() = &ConcreteStateA();
+		static ConcreteStateA stateA;
+		context.state() = &stateA;
 		std::cout << "Concrete State A " << std::endl;
 	}
 };
 
 void ConcreteStateA::handle(Context& context) const 
 
-{
-	context.state() = &ConcreteStateB();
+{	static ConcreteStateB stateB;
+	context.state() = &stateB;
 	std::cout << "Concrete State B " << std::endl;
 }
 
