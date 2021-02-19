@@ -25,14 +25,12 @@ public:
 class ConcreteStateA : public State
 {	
 public:
-	ConcreteStateA() {}
 	void handle(Context& context) const override;
 };
 
 class ConcreteStateB : public State
 {
 public:
-	ConcreteStateB() {}
 	void handle(Context& context) const  override
 	{
 		static ConcreteStateA stateA;
